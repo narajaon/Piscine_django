@@ -16,6 +16,10 @@ capital_cities = {
         "CO": "Denver"
         }
 
+def format_input(input):
+    low = input.lower()
+    return low[:1].upper() + low[1:]
+
 def get_state(name):
     for c_key in capital_cities:
         if capital_cities[c_key] == name:
@@ -30,9 +34,6 @@ def get_capital(name):
     except KeyError: 
         return None
 
-def split_arg(input):
-    return input.split(',')
-
 def check_input(input):
     capital = get_capital(input)
     if capital:
@@ -44,6 +45,8 @@ def check_input(input):
 
 if __name__ == '__main__':
     if len(sys.argv) == 2:
-        formated = split_arg(sys.argv[1])
+        formated = sys.argv[1].split(',')
         for val in formated:
-            print(check_input(val.strip()))
+            formated = format_input(val.strip())
+            if formated != '':
+                print(check_input(formated))
