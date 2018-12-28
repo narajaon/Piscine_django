@@ -3,4 +3,7 @@
 import sys
 
 if __name__ == '__main__':
-    print('coucou')
+    html = open('periodic_table.html', 'w+')
+    txt = open('periodic_table.txt', 'r')
+    html.close()
+    txt.close()
